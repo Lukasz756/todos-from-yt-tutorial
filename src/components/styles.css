@@ -46,6 +46,7 @@
 
 .todos{
     display:flex;
+    font-size: 100px;
     justify-content: space-evenly;
     width: 90%;
     flex-wrap: wrap;
