@@ -1,27 +1,41 @@
-import React from "react";
-import axios from 'axios';
+import React, { Fragment, useEffect, useState } from "react";
+import axios, { AxiosResponse } from 'axios';
+import DisplayShiftList from "./DisplayShiftList";
 
-export default class ShiftList extends React.Component{
-    state = {
-        shift: []
-      }
+interface Shift{
+  id:number;
+  name:string;
+}
+
+
+const ShiftList: React.FC = (props) =>{
+
+  const [data, setData]  = useState<Shift>();
+
+  useEffect(() => {
+    axios({
+      withCredentials: false,
+      method:"get",
+      url: "http://localhost:9000/api/v1/employees",
       
-    componentDidMount(): any {
-        //  axios.get('http://localhost:9000/api/v1/shift').then(res => {
-        //      const shifts = res.data;
-        //      this.setState({shifts})
-        axios({
-          withCredentials: false,
-          method:"get",
-          url: "http://localhost:9000/api/v1/employees",
-          
-        }).then((response)=>{
-          this.setState({shift:response.data})
-        })
-    }
-   render() {
-    
-     return<p></p>
-   }
+    }).then((response: AxiosResponse) => {
+        console.log(response.data);
+        setData( response.data );
+    }).catch((error) => {
+    console.log(error);
+    });
+   }, []);
 
-   }
+        
+return (
+  <Fragment>
+    <DisplayShiftList items={[]} {...data}/>
+  </Fragment>
+)
+}
+
+
+export default ShiftList
+
+
+
