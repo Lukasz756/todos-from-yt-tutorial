@@ -58,6 +58,7 @@ const SingleTodo = ({todo,todos,setTodos}:Props) =>{
        
        <div>
         <span className="icon" onClick={()=>{
+            
             if(!edit && !todo.isDone){
                 setEdit(!edit)
             }

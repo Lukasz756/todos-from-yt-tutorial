@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
+
 import { Todo } from './model';
 import SingleTodo from './SingleTodo';
 import "./styles.css";
+
+
 
 interface Props{
     todos:Todo[];
@@ -16,7 +19,9 @@ const TodoList: React.FC<Props> = ({todos,setTodos}:Props) =>{
             setTodos={setTodos}
             />
         ))}
+      
     </div>;
+    
 
 };
 
