@@ -28,9 +28,9 @@ const ShiftList: React.FC = (props) =>{
 
         
 return (
-  <Fragment>
-    <DisplayShiftList items={[]} {...data}/>
-  </Fragment>
+ <h2>
+  {data?.id}
+ </h2>
 )
 }
 
